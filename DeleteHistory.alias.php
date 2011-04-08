@@ -3,10 +3,10 @@ $aliases = array();
  
 /** English */
 $aliases['en'] = array(
-    'deletehistory' => array( 'Delete History' ),
+    'deletehistory' => array( 'DeleteHistory' ),
 );
  
 /** French */
 $aliases['fr'] = array(
-    'deletehistory' => array( 'Suppression de l\'historique' ),
+    'deletehistory' => array( 'DeleteHistory' ),
 );

@@ -1,11 +1,7 @@
-MediaWiki Delete History extension
+MediaWiki Delete History extension v0.2
 
 Made by Pierre Mavro <pierre@mavro.fr>
 Licenced under GPL v2
-
-This extension delete history is for :
-* Delete unwanted old informations that could be find on history
-* Win up to 90% disks space on MediaWiki database
 
 = Minimum requirements =
 
@@ -34,3 +30,11 @@ include('extensions/DeleteHistory/DeleteHistory.php');
   If you don't see anything new, it's because you don't have the admin privileges.
 
 * Do not hesitate to contact me if you have some questions
+
+= Changelog =
+== v0.2 ==
+Compatible with MediaWiki 1.16
+
+== v0.1 ==
+First release
+

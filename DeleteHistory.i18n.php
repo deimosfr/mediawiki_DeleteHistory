@@ -3,12 +3,12 @@ $messages = array();
 
 /* *** English *** */
 $messages['en'] = array(
-	'deletehistory' => 'Delete History',
-	'deletehistory-desc' => "Add a special page to delete old history (revision) of articles",
-	'what_to_do' => "Please choose what you would like to do",
-	'check_only' => "Simply check if deletable history is available",
-	'del_hist' => "Delete history",
-	'del_hist_opt' => "Delete history and optimize database (could take a while if database is too big)",
+    'deletehistory' => 'Delete History',
+    'deletehistory-desc' => "Add a special page to delete old history (revision) of articles ([http://www.deimos.fr/gitweb/?p=mediawiki_extensions.git;a=tree Git])",
+    'what_to_do' => "Please choose what you would like to do",
+    'check_only' => "Simply check if deletable history is available",
+    'del_hist' => "Delete history",
+    'del_hist_opt' => "Delete history and optimize database (could take a while if database is too big)",
     'result' => 'Result',
     'db_size_old' => 'Database size before optimisation : ',
     'db_size_new' => 'Database size after optimisation  : ',
@@ -17,12 +17,12 @@ $messages['en'] = array(
 
 /* *** French *** */
 $messages['fr'] = array(
-	'deletehistory' => "Supression de l'historique",
-	'deletehistory-desc' => "Ajoute une page spéciale pour la suppression de l'hisotrique sur les articles",
-	'what_to_do' => "Choisissez l'action que vous souhaitez effectuer",
-	'check_only' => "Test simplement si il y a de l'historique supprimable",
-	'del_hist' => "Suppression de l'historique",
-	'del_hist_opt' => "Supression de l'historique et optimisation de la base de données (peu prendre du temps si la base est grosse)",
+    'deletehistory' => "DeleteHistory",
+    'deletehistory-desc' => "Ajoute une page spéciale pour la suppression de l'historique des articles ([http://www.deimos.fr/gitweb/?p=mediawiki_extensions.git;a=tree Git])",
+    'what_to_do' => "Choisissez l'action que vous souhaitez effectuer",
+    'check_only' => "Test simplement si il y a de l'historique supprimable",
+    'del_hist' => "Suppression de l'historique",
+    'del_hist_opt' => "Suppression de l'historique et optimisation de la base de données (peu prendre du temps si la base est grosse)",
     'result' => 'Résultat',
     'db_size_old' => "Taille de la base avant optimisation : ",
     'db_size_new' => "Taille de la base après optimisation : ",
