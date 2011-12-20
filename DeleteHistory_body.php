@@ -24,7 +24,8 @@ class DeleteHistory extends SpecialPage
             return $size;
         }
 
-		global $wgRequest, $wgOut, $wgUser, $wgDBname;
+        // Load required globals
+		global $wgRequest, $wgOut, $wgUser, $wgDBname, $wgVersion;
 
 		$this->setHeaders();
 
@@ -70,7 +71,15 @@ class DeleteHistory extends SpecialPage
 		elseif ((isset($_POST['choice'])) and ($_POST['choice'] == "2"))
 		{
             $show_db_size=1;
-    		$dbw->immediateBegin();
+            // Change deprecated function
+            if ($wgVersion >= 1.18)
+            {
+    		    $dbw->begin();
+            }
+            else
+            {
+        		$dbw->immediateBegin();
+            }
 
             // Get actual database size
             $db_size_old = get_db_size( );
@@ -94,7 +103,7 @@ class DeleteHistory extends SpecialPage
                 // Optimise tables
                 $out_opt .= "<tr>\n<td>";
 				$out_opt .= $row[0] . "</td>\n<td>";
-				$opt_res = $dbw->query("OPTIMIZE TABLE {$row[0]};");
+      			$opt_res = $dbw->query("OPTIMIZE TABLE {$row[0]};");
 
 				while ($res = $dbw->fetchRow( $opt_res ))
 				{
