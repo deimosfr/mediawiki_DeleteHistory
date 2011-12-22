@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => "DeleteHistory",                   											// Name of extension - string
 	'description' => 'deletehistory-desc',                                              	// Description of what the extension does - string
 	'descriptionmsg' => "deletehistory-desc",												// Same as above but name of a message, for i18n - string, added in 1.12.0
-	'version' => '0.4',         															// Version number of extension - number or string
+	'version' => '0.4.1',         															// Version number of extension - number or string
 	'author' => "Pierre Mavro",         													// The extension author's name - string
 	'url' => "http://www.mediawiki.org/wiki/Extension:SpecialDeleteHistory",   				// URL of extension (usually instructions) - string
 );

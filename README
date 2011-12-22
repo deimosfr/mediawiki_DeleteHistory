@@ -32,6 +32,9 @@ include('extensions/DeleteHistory/DeleteHistory.php');
 * Do not hesitate to contact me if you have some questions
 
 = Changelog =
+== v0.4.1 ==
+Fix some vulnerability
+
 == v0.4 ==
 Compatible with MediaWiki 1.18
 

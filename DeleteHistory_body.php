@@ -11,12 +11,13 @@ class DeleteHistory extends SpecialPage
 	function execute( $par )
 	{
         // Get database size function
-        function get_db_size( )
+        function get_db_size()
         {
     		global $wgRequest, $wgDBname;
     		$dbw =& wfGetDB( DB_MASTER );
 
-			$dbsize = $dbw->query( "SELECT table_schema '" . $wgDBname . "', sum( data_length + index_length ) / 1024 / 1024 'DB sze in MB' FROM information_schema.TABLES where TABLE_SCHEMA like '" . $wgDBname . "' GROUP BY table_schema ;");
+            $mw_dbname = $dbw->buildLike($wgDBname);
+			$dbsize = $dbw->query( "SELECT table_schema " . $mw_dbname . ", sum( data_length + index_length ) / 1024 / 1024 'DB sze in MB' FROM information_schema.TABLES where TABLE_SCHEMA " . $mw_dbname . " GROUP BY table_schema ;");
 			while ($row = $dbw->fetchRow($dbsize))
             {
                 $size = $row[1];
@@ -46,9 +47,12 @@ class DeleteHistory extends SpecialPage
 		$del_hist = wfMsg('del_hist');
 		$del_hist_opt = wfMsg('del_hist_opt');
 
+        // Escaping URI
+        $current_uri = htmlentities($_SERVER[REQUEST_URI], ENT_QUOTES, 'UTF-8');
+
 		// User choice
         $wgOut->addWikiText(wfMsg('what_to_do') . ' :');
-		$wgOut->addHTML("<form action=\"$_SERVER[REQUEST_URI]\" method=\"post\">
+		$wgOut->addHTML("<form action=\"$current_uri\" method=\"post\">
 			<input type=\"radio\" name=\"choice\" value=\"0\" checked>$check_only<br />
 			<input type=\"radio\" name=\"choice\" value=\"1\">$del_hist<br />
 			<input type=\"radio\" name=\"choice\" value=\"2\">$del_hist_opt (MySQL)<br /><br />
@@ -59,14 +63,16 @@ class DeleteHistory extends SpecialPage
 	    // Choosen action choice
         $show_db_size=0;
         $pwd = getcwd();
+        $command = 'php ' . $pwd . '/maintenance/deleteOldRevisions.php --delete';
 
 	    if ((isset($_POST['choice'])) and ($_POST['choice'] == "0"))
 	    {
-			$out_logs=shell_exec("php $pwd/maintenance/deleteOldRevisions.php");
+            $command = 'php ' . $pwd . '/maintenance/deleteOldRevisions.php';
+            $out_logs = shell_exec(escapeshellcmd($command));
 	    }
 		elseif ((isset($_POST['choice'])) and ($_POST['choice'] == "1"))
 		{
-			$out_logs=shell_exec("php $pwd/maintenance/deleteOldRevisions.php --delete");
+            $out_logs = shell_exec(escapeshellcmd($command));
 		}
 		elseif ((isset($_POST['choice'])) and ($_POST['choice'] == "2"))
 		{
@@ -85,7 +91,7 @@ class DeleteHistory extends SpecialPage
             $db_size_old = get_db_size( );
 
             // Delete old history
-			$out_logs=shell_exec("php $pwd/maintenance/deleteOldRevisions.php --delete");
+            $out_logs = shell_exec(escapeshellcmd($command));
 
 			// Get all tables
 			$alltables = $dbw->query( "SHOW TABLES" );
