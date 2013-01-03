@@ -15,7 +15,7 @@ aptitude install php5-cli
 
 * Download the latest version of DeleteHistory from :
 ** The primary link : http://www.mediawiki.org/wiki/Extension:SpecialDeleteHistory
-** Alternate link : http://git.deimos.fr/gitweb/?p=mediawiki_extensions.git;a=snapshot;h=HEAD;sf=tgz
+** Alternate link : http://git.deimos.fr/?p=mediawiki_extensions.git;a=snapshot;h=HEAD;sf=tgz
 ** Download with git : git clone git://git.deimos.fr/git/mediawiki_extensions.git
 
 * Uncompress it in your extensions directory (ex. /var/www/mediawiki/extensions).
@@ -32,6 +32,9 @@ include('extensions/DeleteHistory/DeleteHistory.php');
 * Do not hesitate to contact me if you have some questions
 
 = Changelog =
+== v0.5 ==
+Adding Engine and Collation tables informations when requesting optimization. It helps to understand the result of it.
+
 == v0.4.1 ==
 Fix some vulnerability
 

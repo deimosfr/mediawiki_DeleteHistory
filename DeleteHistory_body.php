@@ -17,12 +17,27 @@ class DeleteHistory extends SpecialPage
     		$dbw =& wfGetDB( DB_MASTER );
 
             $mw_dbname = $dbw->buildLike($wgDBname);
-			$dbsize = $dbw->query( "SELECT table_schema " . $mw_dbname . ", sum( data_length + index_length ) / 1024 / 1024 'DB sze in MB' FROM information_schema.TABLES where TABLE_SCHEMA " . $mw_dbname . " GROUP BY table_schema ;");
+			$dbsize = $dbw->query( "select table_schema " . $mw_dbname . ", sum( data_length + index_length ) / 1024 / 1024 'DB sze in MB' from information_schema.TABLES where TABLE_SCHEMA " . $mw_dbname . " GROUP BY table_schema ;");
 			while ($row = $dbw->fetchRow($dbsize))
             {
                 $size = $row[1];
             }
             return $size;
+        }
+
+        // Get tables engine and collation
+        function get_engine_col($table_name)
+        {
+    		global $wgRequest, $wgDBname;
+    		$dbw =& wfGetDB( DB_MASTER );
+
+			$engine_collation = $dbw->query( "select ENGINE,TABLE_COLLATION from information_schema.TABLES where TABLE_SCHEMA = '" . $wgDBname . "' and TABLE_NAME = '" . $table_name . "';");
+			while ($row = $dbw->fetchRow($engine_collation))
+            {
+                $engine = $row[0];
+                $collation = $row[1];
+            }
+            return array('engine' => $engine, 'collation' => $collation);
         }
 
         // Load required globals
@@ -48,7 +63,7 @@ class DeleteHistory extends SpecialPage
 		$del_hist_opt = wfMsg('del_hist_opt');
 
         // Escaping URI
-        $current_uri = htmlentities($_SERVER[REQUEST_URI], ENT_QUOTES, 'UTF-8');
+        $current_uri = htmlentities($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8');
 
 		// User choice
         $wgOut->addWikiText(wfMsg('what_to_do') . ' :');
@@ -99,16 +114,24 @@ class DeleteHistory extends SpecialPage
             // Show optimize status
             $out_opt="<table border=1 style='border-style: double;'>
                 <tr>
-                    <th>Tables</th>
+                    <th>Tables Names</th>
+                    <th>Engine</th>
+                    <th>Collation</th>
                     <th>Status</th>
                 </tr>
             ";
 
 			while ($row = $dbw->fetchRow($alltables))
 			{
-                // Optimise tables
+                // Run and show output
                 $out_opt .= "<tr>\n<td>";
-				$out_opt .= $row[0] . "</td>\n<td>";
+                // Database name
+				$out_opt .= $row[0] . "&nbsp;</td>\n<td>";
+                // Get engine and collation
+                extract(get_engine_col($row[0]));
+				$out_opt .= $engine . "&nbsp;</td>\n<td>";
+				$out_opt .= $collation . "&nbsp;</td>\n<td>";
+                // Optimize
       			$opt_res = $dbw->query("OPTIMIZE TABLE {$row[0]};");
 
 				while ($res = $dbw->fetchRow( $opt_res ))
@@ -116,18 +139,17 @@ class DeleteHistory extends SpecialPage
                     // Set green color on OK and if table is already up to date
                     if (preg_match ("/OK/i", $res[3]))
                     {
-					    $out_opt .= '<span style="font-weight: bold; color: green"> ' . $res[3] . '</span>';
+					    $out_opt .= '<span style="font-weight: bold; color: green"> ' . $res[3] . '&nbsp;</span>';
                     }
                     elseif (preg_match ("/Table is already up to date/i", $res[3]))
                     {
-                        $out_opt .= '<span style="color: green">' . $res[3] . '</span>';
+                        $out_opt .= '<span style="color: green">' . $res[3] . '&nbsp;</span>';
                     }
                     else
                     {
-                        $out_opt .= $res[3];
+                        $out_opt .= $res[3] . '&nbsp;';
                     }
 				}
-                $out_opt .= '</td></tr>';
 			}
             $out_opt.="</table>";
 

@@ -4,7 +4,7 @@ $messages = array();
 /* *** English *** */
 $messages['en'] = array(
 	'deletehistory' => 'Delete History',
-	'deletehistory-desc' => "Add a special page to delete old history (revision) of articles ([http://www.deimos.fr/gitweb/?p=mediawiki_extensions.git;a=tree Git])",
+	'deletehistory-desc' => "Add a special page to delete old history (revision) of articles",
 	'what_to_do' => "Please choose what you would like to do",
 	'check_only' => "Simply check if deletable history is available",
 	'del_hist' => "Delete history",
@@ -21,7 +21,7 @@ $messages['en'] = array(
 /* *** French *** */
 $messages['fr'] = array(
 	'deletehistory' => "DeleteHistory",
-	'deletehistory-desc' => "Ajoute une page spéciale pour la suppression de l'historique des articles ([http://www.deimos.fr/gitweb/?p=mediawiki_extensions.git;a=tree Git])",
+	'deletehistory-desc' => "Ajoute une page spéciale pour la suppression de l'historique des articles",
 	'what_to_do' => "Choisissez l'action que vous souhaitez effectuer",
 	'check_only' => "Test simplement si il y a de l'historique supprimable",
 	'del_hist' => "Suppression de l'historique",
