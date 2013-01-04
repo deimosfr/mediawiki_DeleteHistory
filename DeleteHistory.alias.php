@@ -10,3 +10,8 @@ $aliases['en'] = array(
 $aliases['fr'] = array(
     'deletehistory' => array( 'DeleteHistory' ),
 );
+
+/** German */
+$aliases['de'] = array(
+    'deletehistory' => array( 'DeleteHistory' ),
+);

@@ -1,4 +1,4 @@
-MediaWiki Delete History extension v0.2
+MediaWiki Delete History extension
 
 Made by Pierre Mavro <pierre@mavro.fr>
 Licenced under GPL v2
@@ -32,6 +32,9 @@ include('extensions/DeleteHistory/DeleteHistory.php');
 * Do not hesitate to contact me if you have some questions
 
 = Changelog =
+== v0.6 ==
+Adding German language
+
 == v0.5 ==
 Adding Engine and Collation tables informations when requesting optimization. It helps to understand the result of it.
 
