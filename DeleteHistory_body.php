@@ -3,9 +3,12 @@ class DeleteHistory extends SpecialPage
 {
 	function __construct()
 	{
+        global $wgVersion;
 		// Need to belong to Administor group
 		parent::__construct( 'DeleteHistory', 'editinterface' );
-		wfLoadExtensionMessages('DeleteHistory');
+        if ($wgVersion <= 1.16) {
+    		wfLoadExtensionMessages('DeleteHistory');
+        }
 	}
 
 	function execute( $par )
