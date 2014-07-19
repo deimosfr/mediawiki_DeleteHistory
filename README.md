@@ -11,26 +11,27 @@ Minimum requirements
 
 Installation instructions
 -------------------------
-* Be sure you've got php5-cli installed. If you're under Debian like OS :
+1. Be sure you've got php5-cli installed. If you're under Debian like OS :
+```
 aptitude install php5-cli
+```
 
-* Download the latest version of DeleteHistory from :
-** The primary link : http://www.mediawiki.org/wiki/Extension:SpecialDeleteHistory
-** Alternate link : http://git.deimos.fr/?p=mediawiki_extensions.git;a=snapshot;h=HEAD;sf=tgz
-** Download with git : git clone git://git.deimos.fr/git/mediawiki_extensions.git
+2. Download the latest version of DeleteHistory from :
+* The primary link : http://www.mediawiki.org/wiki/Extension:SpecialDeleteHistory
+* Alternate link : http://git.deimos.fr/?p=mediawiki_extensions.git;a=snapshot;h=HEAD;sf=tgz
+* Download with git : git clone git://git.deimos.fr/git/mediawiki_extensions.git
 
-* Uncompress it in your extensions directory (ex. /var/www/mediawiki/extensions).
+3. Uncompress it in your extensions directory (ex. /var/www/mediawiki/extensions).
 
-* Edit your LocalSettings.conf and add those lines :
+4. Edit your LocalSettings.conf and add those lines :
 ```
 # DeleteHistory
 $wgGroupPermissions['sysop']['DeleteHistory'] = true;
 include('extensions/DeleteHistory/DeleteHistory.php');
 ```
-* That's all, now you can go in Special Pages and try the DeleteHistory extension.
-  If you don't see anything new, it's because you don't have the admin privileges.
+5. That's all, now you can go in Special Pages and try the DeleteHistory extension. If you don't see anything new, it's because you don't have the admin privileges.
 
-* Do not hesitate to contact me if you have some questions
+6. Do not hesitate to contact me if you have some questions
 
 Changelog
 ---------
