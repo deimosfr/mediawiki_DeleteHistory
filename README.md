@@ -34,32 +34,32 @@ include('extensions/DeleteHistory/DeleteHistory.php');
 Changelog
 ---------
 * v0.8
-+ Adding Brazilian Portuguese language
-+ Fix minor bug on reporting array
+ * Adding Brazilian Portuguese language
+ * Fix minor bug on reporting array
 
-- v0.7
-* Compatible with MediaWiki 1.21
+* v0.7
+ * Compatible with MediaWiki 1.21
 
-- v0.6
-* Adding German language
+* v0.6
+ * Adding German language
 
-- v0.5
-* Adding Engine and Collation tables informations when requesting optimization. It helps to understand the result of it.
+* v0.5
+ * Adding Engine and Collation tables informations when requesting optimization. It helps to understand the result of it.
 
-- v0.4.1
-* Fix some vulnerability
+* v0.4.1
+ * Fix some vulnerability
 
-- v0.4
-* Compatible with MediaWiki 1.18
+* v0.4
+ * Compatible with MediaWiki 1.18
 
-- v0.3
-* Show in KB or MB in the database space won when an optimize runs
-* Changed shown order (Result,Optimisation Status,Logs)
-* Added arrays style to results
+* v0.3
+ * Show in KB or MB in the database space won when an optimize runs
+ * Changed shown order (Result,Optimisation Status,Logs)
+ * Added arrays style to results
 
-- v0.2
-* Compatible with MediaWiki 1.16
+* v0.2
+ * Compatible with MediaWiki 1.16
 
-- v0.1
-* First release
+* v0.1
+ * First release
 
