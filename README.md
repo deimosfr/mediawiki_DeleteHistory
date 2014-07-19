@@ -34,8 +34,8 @@ include('extensions/DeleteHistory/DeleteHistory.php');
 Changelog
 ---------
 * v0.8
-⋅⋅* Adding Brazilian Portuguese language
-⋅⋅* Fix minor bug on reporting array
++ Adding Brazilian Portuguese language
++ Fix minor bug on reporting array
 
 - v0.7
 * Compatible with MediaWiki 1.21
