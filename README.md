@@ -16,28 +16,26 @@ Installation instructions
 aptitude install php5-cli
 ```
 
-2. Download the latest version of DeleteHistory from :
-* The primary link : http://www.mediawiki.org/wiki/Extension:SpecialDeleteHistory
-* Alternate link : http://git.deimos.fr/?p=mediawiki_extensions.git;a=snapshot;h=HEAD;sf=tgz
-* Download with git : git clone git://git.deimos.fr/git/mediawiki_extensions.git
+2. Download the latest version of DeleteHistory in your extensions directory (ex. /var/www/mediawiki/extensions):
+```
+git clone git://git.deimos.fr/git/mediawiki_extensions.git
+```
 
-3. Uncompress it in your extensions directory (ex. /var/www/mediawiki/extensions).
-
-4. Edit your LocalSettings.conf and add those lines :
+3. Edit your LocalSettings.conf and add those lines :
 ```
 # DeleteHistory
 $wgGroupPermissions['sysop']['DeleteHistory'] = true;
 include('extensions/DeleteHistory/DeleteHistory.php');
 ```
-5. That's all, now you can go in Special Pages and try the DeleteHistory extension. If you don't see anything new, it's because you don't have the admin privileges.
+4. That's all, now you can go in Special Pages and try the DeleteHistory extension. If you don't see anything new, it's because you don't have the admin privileges.
 
-6. Do not hesitate to contact me if you have some questions
+5. Do not hesitate to contact me if you have some questions
 
 Changelog
 ---------
-- v0.8
-* Adding Brazilian Portuguese language
-* Fix minor bug on reporting array
+* v0.8
+⋅⋅* Adding Brazilian Portuguese language
+⋅⋅* Fix minor bug on reporting array
 
 - v0.7
 * Compatible with MediaWiki 1.21
