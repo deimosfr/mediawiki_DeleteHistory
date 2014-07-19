@@ -18,7 +18,7 @@ aptitude install php5-cli
 
 * Download the latest version of DeleteHistory in your extensions directory (ex. /var/www/mediawiki/extensions):
 ```
-git clone git://git.deimos.fr/git/mediawiki_extensions.git /var/www/mediawiki/extensions/DeleteHistory
+git clone https://github.com/deimosfr/mediawiki_DeleteHistory.git /var/www/mediawiki/extensions/DeleteHistory
 ```
 
 * Edit your LocalSettings.conf and add those lines :
