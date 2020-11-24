@@ -61,20 +61,20 @@ class DeleteHistory extends SpecialPage
         $param = $wgRequest->getText('param');
 
         // Localisation messages
-        $check_only = wfMsg('check_only');
-        $del_hist = wfMsg('del_hist');
-        $del_hist_opt = wfMsg('del_hist_opt');
+        $check_only = wfMessage('check_only')->text();
+        $del_hist = wfMessage('del_hist')->text();
+        $del_hist_opt = wfMessage('del_hist_opt')->text();
 
         // Escaping URI
         $current_uri = htmlentities($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8');
 
         // User choice
-        $wgOut->addWikiText(wfMsg('what_to_do') . ' :');
+        $wgOut->addWikiText(wfMessage('what_to_do')->text() . ' :');
         $wgOut->addHTML("<form action=\"$current_uri\" method=\"post\">
             <input type=\"radio\" name=\"choice\" value=\"0\" checked>$check_only<br />
             <input type=\"radio\" name=\"choice\" value=\"1\">$del_hist<br />
             <input type=\"radio\" name=\"choice\" value=\"2\">$del_hist_opt (MySQL)<br /><br />
-            <input type=\"submit\" value=\"" . wfMsg('validate') . "\">
+            <input type=\"submit\" value=\"" . wfMessage('validate')->text() . "\">
             </form>
             ");
 
@@ -164,7 +164,7 @@ class DeleteHistory extends SpecialPage
         if ((isset($_POST['choice'])) and ($_POST['choice'] != ""))
         {
             $wgOut->addHTML("<br />");
-            $wgOut->addWikiText('=' . wfMsg('result') . '=');
+            $wgOut->addWikiText('=' . wfMessage('result')->text() . '=');
 
             // Show DB size if ask to optimize
             if ($show_db_size == 1)
@@ -186,15 +186,15 @@ class DeleteHistory extends SpecialPage
                 $wgOut->addHTML("<table border=1'>
                     <tr>
                     <td></td>
-                    <th>" . wfMsg('size') . "</th>
+                    <th>" . wfMessage('size')->text() . "</th>
                     </tr><tr>
-                    <th>" . wfMsg('db_size_old') . "</th>
+                    <th>" . wfMessage('db_size_old')->text() . "</th>
                     <td>$db_size_old MB</td>
                     </tr><tr>
-                    <th>" . wfMsg('db_size_new') . "</th>
+                    <th>" . wfMessage('db_size_new')->text() . "</th>
                     <td>$db_size_new MB</td>
                     </tr><tr>
-                    <th>" . wfMsg('db_space_won') . "</th>
+                    <th>" . wfMessage('db_space_won')->text() . "</th>
                     <td align='center'><b>" . kb_or_mb($db_size_old,$db_size_new) . "</b></td>
                     </tr></table><br />
                     ");
@@ -202,14 +202,14 @@ class DeleteHistory extends SpecialPage
 
             if ($out_opt)
             {
-                $wgOut->addWikiText('=' . wfMsg('opt_stat') . '=');
+                $wgOut->addWikiText('=' . wfMessage('opt_stat')->text() . '=');
                 $wgOut->addHTML($out_opt . '<br />');
             }
             if ($out_logs)
             {
                 if ($_POST['choice'] == "2")
                 {
-                    $wgOut->addWikiText('=' . wfMsg('logs') . '=');
+                    $wgOut->addWikiText('=' . wfMessage('logs')->text() . '=');
                 }
                 $wgOut->addHTML("<pre>".$out_logs."</pre>");
             }
